@@ -50,7 +50,11 @@ class RK4(object):
             y = self._solve(y, self.t, h)
             for c, i in enumerate(y):
                 res[c].append(i)
+
             self.t += h
+
+            if self.t + h > n:
+                h = n - self.t
 
         return t, res
 
