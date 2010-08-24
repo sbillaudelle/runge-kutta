@@ -33,7 +33,7 @@ def I(t):
     global c
     if ((round(t / 10.0) + 10) % 3) >= 2 and c <= 10:
         c += 0.01
-        return 20
+        return 15
     else:
         if not ((round(t / 10.0) + 10) % 3) >= 2:
             c = 0
@@ -55,16 +55,20 @@ hdot = lambda t, v, n, m, h: alpha_h(v) * (1 - h) - beta_h(V) * h
 rk4 = RK4(vdot, ndot, mdot, hdot)
 t, y = rk4.solve([V, n, m, h], .01, 50)
 
-pylab.subplot(2, 1, 1)
+pylab.subplot(3, 1, 1)
 pylab.plot(t, y[0])
 pylab.grid()
-pylab.xlabel("Time")
 pylab.ylabel("Membrane Potential (mV)")
 
-pylab.subplot(2, 1, 2)
+pylab.subplot(3, 1, 2)
 pylab.plot(t, y[1], t, y[2], t, y[3])
 pylab.grid()
-pylab.xlabel("Time")
 pylab.ylabel("Gating")
+
+pylab.subplot(3, 1, 3)
+pylab.plot(t, [I(i) for i in t])
+pylab.grid()
+pylab.xlabel("Time")
+pylab.ylabel("External Current")
 
 pylab.show()
