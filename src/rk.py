@@ -45,7 +45,7 @@ class RK4(object):
         for i in y:
             res.append([])
 
-        while self.t <= n:
+        while self.t <= n and h != 0:
             t.append(self.t)
             y = self._solve(y, self.t, h)
             for c, i in enumerate(y):
