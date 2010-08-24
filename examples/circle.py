@@ -7,6 +7,7 @@
 # To Public License, Version 2, as published by Sam Hocevar. See
 # http://sam.zoy.org/wtfpl/COPYING for more details.
 
+import pylab
 import math
 from rk import RK4
 
@@ -14,7 +15,7 @@ xdot = lambda t, y, z: math.cos(t)
 ydot = lambda t, y, z: -y
 
 rk4 = RK4(xdot, ydot)
-res = rk4.solve([0, 1], .01, 2*math.pi)
+t, y = rk4.solve([0, 1], .01, 2*math.pi)
 
-for i in res:
-    print i[0], i[1][0], i[1][1]
+pylab.plot(y[0], y[1])
+pylab.show()

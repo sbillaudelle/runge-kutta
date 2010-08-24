@@ -22,10 +22,3 @@ In order to run one of the example simulations,
 just execute the particular file:
 
 $ python damped_oscillation.py
-
-Plotting the output using Gnuplot:
-
-$ python damped_oscillation.py > /tmp/do.dat
-
-$ gnuplot
-gnuplot> plot '/tmp/do.dat' using 1:3

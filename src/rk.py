@@ -40,14 +40,19 @@ class RK4(object):
         :param n: Endpoint.
         """
 
+        t = []
         res = []
+        for i in y:
+            res.append([])
 
         while self.t <= n:
+            t.append(self.t)
             y = self._solve(y, self.t, h)
-            res.append((self.t, y))
+            for c, i in enumerate(y):
+                res[c].append(i)
             self.t += h
 
-        return res
+        return t, res
 
 
     def _solve(self, y, t, h):

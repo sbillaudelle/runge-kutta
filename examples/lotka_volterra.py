@@ -11,6 +11,7 @@
 # See http://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equation for
 # more information.
 
+import pylab
 from rk import RK4
 
 # Nope. We don't explain the parameters. RTFM.
@@ -23,7 +24,7 @@ xdot = lambda t, x, y: A1*x - x*y*B1
 ydot = lambda t, x, y: B2*x*y - A2*y
 
 lv = RK4(xdot, ydot)
-res = lv.solve([80, 40], .1, 250)
+t, y = lv.solve([80, 40], .1, 250)
 
-for i in res:
-    print i[0], i[1][0], i[1][1]
+pylab.plot(t, y[0], t, y[1])
+pylab.show()
