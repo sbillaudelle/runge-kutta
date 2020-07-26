@@ -69,14 +69,14 @@ class RK4(object):
 
         k2 = []
         for f in functions:
-            k2.append(h * f(t + .5*h, *[y[i] + .5*h*k1[i] for i in xrange(0, len(y))]))
+            k2.append(h * f(t + .5*h, *[y[i] + .5*h*k1[i] for i in range(0, len(y))]))
 
         k3 = []
         for f in functions:
-            k3.append(h * f(t + .5*h, *[y[i] + .5*h*k2[i] for i in xrange(0, len(y))]))
+            k3.append(h * f(t + .5*h, *[y[i] + .5*h*k2[i] for i in range(0, len(y))]))
 
         k4 = []
         for f in functions:
-            k4.append(h * f(t + h, *[y[i] + h*k3[i] for i in xrange(0, len(y))]))
+            k4.append(h * f(t + h, *[y[i] + h*k3[i] for i in range(0, len(y))]))
 
-        return [y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i]) / 6.0 for i in xrange(0, len(y))]
+        return [y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i]) / 6.0 for i in range(0, len(y))]
